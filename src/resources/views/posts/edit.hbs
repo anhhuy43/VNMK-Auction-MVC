@@ -1,0 +1,60 @@
+<div class="create-post">
+
+  <div class="header-create-post">
+    <h3>Update</h3>
+  </div>
+
+  <form method="POST" action="/posts/{{post._id}}?_method=PUT">
+    <div class="mb-3 form-group">
+      <textarea 
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Title">{{post.name}}</textarea>
+    </div>
+    <div class="mb-3 form-group">
+      <textarea 
+        class="form-control"
+        id="description"
+        name="description"
+        placeholder="Description">{{post.description}}</textarea>
+    </div>
+    <div class="mb-3 form-group">
+      <textarea 
+        class="form-control"
+        id="image1"
+        name="image1"
+        placeholder="image1">{{post.image1}}</textarea>
+    </div>
+    <div class="mb-3 form-group">
+      <textarea 
+        class="form-control"
+        id="image2"
+        name="image2"
+        placeholder="image2">{{post.image2}}</textarea>
+    </div>
+    <div class="mb-3 form-group">
+      <textarea 
+        class="form-control"
+        id="image3"
+        name="image3"
+        placeholder="image3">{{post.image3}}</textarea>
+    </div>
+    <div class="mb-3 form-group">
+      <textarea 
+        class="form-control"
+        id="image4"
+        name="image4"
+        placeholder="image4">{{post.image4}}</textarea>
+    </div>
+    <div class="mb-3 form-group">
+      <textarea 
+        class="form-control"
+        id="image5"
+        name="image5"
+        placeholder="image5">{{post.image5}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+
+</div>

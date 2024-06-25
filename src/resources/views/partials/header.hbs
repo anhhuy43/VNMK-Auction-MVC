@@ -1,0 +1,76 @@
+<header>
+  <div class="header text-center">
+    <a class="btn-logo" href="/">
+      <img class="logo" src="/assets/images/Trans_white_logo.png" alt="" />
+    </a>
+  </div>
+  <div class="background-navbar">
+    <div class="parent-navbar">
+      <ul class="child-navbar1">
+        <li style="padding-left: 0"><a href="/">Home</a></li>
+        <li class="dropdown">
+          <a href="">Product</a>
+          <div class="dropdown-content">
+            <a href="">Kit</a>
+            <a href="">Switchs</a>
+            <a href="">Keycaps</a>
+          </div>
+        </li>
+        <li><a
+            href="https://www.facebook.com/groups/vnmkmarket"
+          >Fanpage</a></li>
+        <li><a href="">Discord</a></li>
+        <li><a
+            href="https://www.facebook.com/groups/vnmkmarket/about"
+          >About</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+
+      <div class="child-navbar2">
+        <!-- search-box -->
+        {{! <div action="" class="search-box">
+          <form action="/posts/search" method="POST" role="search">
+            <i class="fa fa-search btn-search" aria-hidden="true"></i>
+            <input
+              type="search"
+              class="input-search"
+              id="searchInput"
+              name="searchTerm"
+              placeholder="search..."
+            />
+          </form>
+        </div> }}
+        <div class="searchBox">
+          <form action="/posts/search" method="POST" role="search">
+            <input
+              type="search"
+              class="inputSearch"
+              id="searchInput"
+              name="searchTerm"
+              onmouseout="this.value = ''; this.blur();"
+            />
+          </form>
+          <i class="fa fa-search searchIcon"></i>
+        </div>
+        <a href="/posts/create"><i
+            class="fa fa-plus create-post-btn"
+            aria-hidden="true"
+          ></i></a>
+        <div class="dropdown dropdown-user">
+          <a class="account" href="/user/info"><i
+              class="fa fa-user"
+              aria-hidden="true"
+            ></i></a>
+          <div class="dropdown-content">
+            <a href="/me/stored/posts" style="margin: 0;">My Posts</a>
+          </div>
+        </div>
+
+        <a class="notification" href="" style="margin-right: 0;"><i
+            class="fa fa-bell"
+            aria-hidden="true"
+          ></i></a>
+      </div>
+    </div>
+  </div>
+</header>

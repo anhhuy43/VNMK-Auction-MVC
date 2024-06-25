@@ -1,0 +1,64 @@
+<div class="info-card user-edit">
+  <div class="card-body">
+    <h4 style="text-align: center; padding: 24px 0; font-weight:bold;">Edit Profile</h4>
+    <form method="POST" action="/user/update?_method=PUT">
+      <div style="text-align: center;">First Name:</div>
+      <div class="mb-3 form-group">
+        <input
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          value="{{user.firstName}}"
+          style="text-align: center;"
+        >
+      </div>
+      <div style="text-align: center;">Last Name:</div>
+      <div class="mb-3 form-group">
+        <input
+          class="form-control"
+          id="lastName"
+          name="lastName"
+          value="{{user.lastName}}"
+          style="text-align: center;"
+        >
+      </div>
+      <div style="text-align: center;">Email:</div>
+      <div class="mb-3 form-group">
+        <input
+          class="form-control"
+          id="email"
+          name="email"
+          value="{{user.email}}"
+          style="text-align: center;"
+        >
+      </div>
+      <div class="wrapper">
+        <button type="submit" class="button">UPDATE</button>
+      </div>
+    </form>
+
+    <svg
+      style="visibility: hidden; position: absolute;"
+      width="0"
+      height="0"
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+    >
+      <defs>
+        <filter id="goo"><feGaussianBlur
+            in="SourceGraphic"
+            stdDeviation="10"
+            result="blur"
+          />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+            result="goo"
+          />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
+  </div>
+</div>

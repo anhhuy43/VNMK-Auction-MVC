@@ -1,0 +1,79 @@
+<div class="my-posts">
+  <h3>My Posts</h3>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col" colspan="2">Create Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each posts}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.description}}</td>
+      <td>{{this.createAt}}</td>
+      <td class="dropdown-my-list-posts">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >...
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/posts/{{this._id}}/edit">Update</a></li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete-post-modal" data-id="{{this._id}}">Delete</a></li>
+            </ul>
+          </div>
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>
+
+{{!-- confirm delete post --}}
+<div id="delete-post-modal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete This Post?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="btn-delete-post" type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+
+<form method="POST" name="delete-post-form"></form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let postsID
+  let deleteForm = document.forms['delete-post-form']
+  let btnDeletePost = document.getElementById('btn-delete-post')
+
+  $('#delete-post-modal').on('show.bs.modal', function  (event) {
+        let button = $(event.relatedTarget)
+        postsID = button.data('id')
+  })
+
+  btnDeletePost.onclick = function () {
+    deleteForm.action = '/posts/' + postsID + '?_method=DELETE'
+    deleteForm.submit()
+  }
+})
+  
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

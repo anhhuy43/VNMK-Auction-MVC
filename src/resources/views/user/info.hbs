@@ -1,0 +1,25 @@
+<div class="info-card">
+  <div class="card-body">
+    <div class="user-avatar"><button class="btn btn-secondary avatar">
+        <img
+          class="avatar-img"
+          src="https://static.vecteezy.com/system/resources/thumbnails/027/951/137/small_2x/stylish-spectacles-guy-3d-avatar-character-illustrations-png.png"
+          height="100"
+          width="100"
+        /></button></div>
+
+    <a href="/user/edit" class="edit-profile-btn"><i
+        class="fa fa-pencil"
+        aria-hidden="true"
+      ></i></a>
+    <h5 class="user-name">{{user.lastName}} {{user.firstName}}</h5>
+    <p class="user-email reset-css">@{{user.email}}</p>
+    <a href="/user/changePassword" id="changePassword">Change Password</a>
+    <div style="display: flex; justify-content: center">
+      <a href="/user/logout" class="log-out-btn"><i
+          class="fa fa-sign-out"
+          aria-hidden="true"
+        ></i></a>
+    </div>
+  </div>
+</div>

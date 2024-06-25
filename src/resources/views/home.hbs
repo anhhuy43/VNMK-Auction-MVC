@@ -1,0 +1,77 @@
+<div class="home-header"><h1>POSTS</h1></div>
+<div class="searchBox">
+  <form name="search">
+    <input
+      type="text"
+      class="inputSearch"
+      name="txt"
+      onmouseout="this.value = ''; this.blur();"
+    />
+  </form>
+  <i class="fa fa-search searchIcon"></i>
+</div>
+<div class="searchBar">
+  <form
+    action="/posts/search"
+    method="POST"
+    role="search"
+    style="display: flex; justify-content: center;"
+  >
+    <input
+      type="hidden"
+      id="searchInput"
+      name="searchTerm"
+      style="width: 500px; border-radius: 26px;"
+      placeholder="search..."
+    />
+  </form>
+</div>
+
+{{#each posts}}
+  <div class="post-bid">
+    <div class="card">
+      <div class="card-body" style="padding: 50px 50px 0 50px;">
+        <div class="dropdown-my-list-posts">
+          <a
+            href="/posts/{{this.slug}}"
+            style="text-decoration: none; color: black"
+          ><h5 class="card-title">{{this.name}}</h5></a>
+          <div class="dropdown-my-list-posts">
+          </div>
+        </div>
+        <p class="card-text">{{this.description}}</p>
+        <p class="card-text"><small
+            class="text-body-secondary"
+          >{{this.createAt}}</small></p>
+      </div>
+      <div class="cards-img-bottom">
+        <div class="card-img">
+          <img
+            src="{{this.image1}}"
+            style="width: 100%; border-top-left-radius: 26px; border-bottom-left-radius: 26px;"
+          />
+        </div>
+        <div class="container text-center card-img">
+          <div class="row row-cols-2">
+            <div class="col"><img
+                src="{{this.image2}}"
+                style="width: 100%"
+              /></div>
+            <div class="col"><img
+                src="{{this.image3}}"
+                style="width: 100%; border-top-right-radius: 26px;"
+              /></div>
+            <div class="col"><img
+                src="{{this.image4}}"
+                style="width: 100%"
+              /></div>
+            <div class="col"><img
+                src="{{this.image5}}"
+                style="width: 100%; border-bottom-right-radius: 26px;"
+              /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}

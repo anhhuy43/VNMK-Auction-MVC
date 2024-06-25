@@ -1,0 +1,88 @@
+<div class="create-post">
+
+  <div class="header-create-post">
+    <h3>Create New Post</h3>
+  </div>
+
+  <form method="POST" action="/posts/store">
+    <div class="mb-3 form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Title"
+        required
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        name="description"
+        placeholder="Description"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input type="date" class="form-control" id="date" name="date" />
+    </div>
+    <div class="mb-3 form-group">
+      <input type="time" class="form-control" id="time" name="time" />
+    </div>
+    <div class="mb-3 form-group" style="padding: 6px 12px;">
+      <select id="duration" name="duration" style="border-radius: 16px; border: 2px solid grey; padding: 2px">
+        {{#each hoursList}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="image1"
+        name="image1"
+        placeholder="url image 1"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="image2"
+        name="image2"
+        placeholder="url image 2"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="image3"
+        name="image3"
+        placeholder="url image 3"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="image4"
+        name="image4"
+        placeholder="url image 4"
+      />
+    </div>
+    <div class="mb-3 form-group">
+      <input
+        type="text"
+        class="form-control"
+        id="image5"
+        name="image5"
+        placeholder="url image 5"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Tạo</button>
+  </form>
+
+</div>

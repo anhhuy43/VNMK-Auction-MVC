@@ -1,0 +1,146 @@
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/duration.js"></script>
+
+<div class="post-bid">
+  <div class="card">
+
+    <div id="blur">
+      
+    </div>
+
+    <div class="content">
+      <div class="card-body content-wrapper">
+      <a
+        href="/posts/{{post.slug}}"
+        style="text-decoration: none; color: black"
+      ><h5 class="card-title">{{post.name}}</h5></a>
+      <p class="card-text">{{post.description}}</p>
+      <p class="card-text"><small
+          class="text-body-secondary"
+        >{{post.createAt}}</small></p>
+    </div>
+    <div class="card-body content-clock">
+      <p id="clock">
+      
+      </p>
+    </div>
+    
+    </div>
+    <div class="cards-img-bottom">
+      <div class="card-img">
+        <img src="{{post.image1}}" style="width: 100%; border-top-left-radius: 26px; border-bottom-left-radius: 26px;" />
+      </div>
+      <div class="container text-center card-img">
+        <div class="row row-cols-2">
+          <div class="col"><img
+              src="{{post.image2}}"
+              style="width: 100%"
+            /></div>
+          <div class="col"><img
+              src="{{post.image3}}"
+              style="width: 100%; border-top-right-radius: 26px;"
+            /></div>
+          <div class="col"><img
+              src="{{post.image4}}"
+              style="width: 100%"
+            /></div>
+          <div class="col"><img
+              src="{{post.image5}}"
+              style="width: 100%; border-bottom-right-radius: 26px;"
+            /></div>
+        </div>
+      </div>
+    </div>
+    <div class="topBidValue">
+        Top Bid: $<p id="topBidValue"></p>
+    </div>
+
+    <hr class="hr hr-blurry" />
+
+    <div class="comment">
+    {{#each comment}}
+      <div class="comment-content">
+        <h5 class="comment-content-color">@ {{this.user.email}}</h5>
+        <p class="comment-content-color" style="color: #FFFFFF;">{{this.contentBid}}</p>
+      </div>
+    {{/each}}
+    </div>
+    
+
+    <form method="POST" action="/posts/comment" class="form-comment">
+      <input type="hidden" value="{{post.slug}}" name="slug" id="slug" />
+      <input type="hidden" value="{{post._id}}" name="postId" id="postId" />
+      <div class="form-group comment-area">
+        <input
+          type="number"
+          class="form-control"
+          id="contentBid"
+          name="contentBid"
+          placeholder="how much do u want?"
+          style="border: none;"
+          required
+        />
+        <button type="submit" class="btn btn-dark">Bid</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+<script>
+  dayjs.extend(window.dayjs_plugin_duration)
+
+  
+
+  let countdownTime = {{countdownTime}}
+  let remainingTimeStart = {{remainingTimeStart}}
+  let isAfter = {{isAfter}}
+  let topBidValue = {{topBidValue}}
+  document.querySelector('#topBidValue').innerHTML = topBidValue
+
+  const setBidState = () => {
+      document.querySelector('#blur').style.display = 'none'
+  }
+
+  const setCommentState = () => {
+      document.querySelector('.form-comment').style.display = 'none'
+      document.querySelector('.content-clock').style.display = 'none'
+  }
+
+  const myInterval = setInterval(() => {
+
+    if(isAfter) {
+      setCommentState()
+      clearInterval(myInterval)
+    }
+    
+    const clockElement = document.querySelector('#clock')
+    const blurElement = document.querySelector('#blur')
+    
+    countdownTime = countdownTime - 1
+    remainingTimeStart = remainingTimeStart + 1;
+
+    const currentDuration = dayjs.duration(countdownTime, 'seconds').format('HH[h] mm[m] ss[s]')
+
+    const absRemainingTimeStart = Math.abs(remainingTimeStart)
+    const remainingTime = dayjs.duration(absRemainingTimeStart, 'seconds').format('HH[h] mm[m] ss[s]')
+
+    if (remainingTimeStart > 0 && countdownTime > 0) {
+      setBidState()
+    }
+
+    if (remainingTimeStart > 0 && countdownTime === 0) {
+      setCommentState()
+      clearInterval(myInterval)
+    }
+
+    console.log('remainingTimeStart',remainingTimeStart)
+    console.log('countdownTime',countdownTime)
+
+    clockElement.innerHTML = currentDuration
+    blurElement.innerHTML = remainingTime
+  }, 1000)
+</script>

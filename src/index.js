@@ -6,8 +6,7 @@ const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const app = express();
-const port = 3000;
-
+require("dotenv").config();
 const route = require("./routes");
 const db = require("../config/db");
 
@@ -38,6 +37,6 @@ app.set("views", path.join(__dirname, "resources/views"));
 // Routes init
 route(app);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}`);
 });

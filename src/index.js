@@ -4,12 +4,12 @@ const handlebars = require("express-handlebars").engine;
 const morgan = require("morgan");
 const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
-const multer = require('multer');
+const multer = require("multer");
 const app = express();
 const port = 3000;
 
 const route = require("./routes");
-const db = require("./config/db");
+const db = require("../config/db");
 
 // connect to db
 db.connect();

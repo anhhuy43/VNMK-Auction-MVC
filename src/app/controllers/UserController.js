@@ -7,7 +7,7 @@ const customParseFormat = require("dayjs/plugin/customParseFormat");
 const utc = require("dayjs/plugin/utc");
 const timezone = require("dayjs/plugin/timezone");
 const jwt = require("jsonwebtoken");
-const authConstant = require("../../constants/authConstant");
+require("dotenv").config();
 dayjs.extend(utc);
 dayjs.extend(customParseFormat);
 dayjs.extend(timezone);
@@ -37,9 +37,9 @@ class UserController {
         if (isPasswordMatch) {
           const token = jwt.sign(
             { userId: foundUser._id.toString() },
-            authConstant.JWT_SECRET_KEY
+            process.env.JWT_SECRET_KEY
           );
-          res.cookie(authConstant.TOKEN_KEY, token);
+          res.cookie(process.env.TOKEN_KEY, token);
           res.redirect("/");
         } else {
           res.render("user/login", {
@@ -109,7 +109,7 @@ class UserController {
   }
 
   async logout(req, res, next) {
-    res.clearCookie(authConstant.TOKEN_KEY);
+    res.clearCookie(process.env.TOKEN_KEY);
     res.redirect("/user/login");
   }
 

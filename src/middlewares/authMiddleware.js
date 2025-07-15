@@ -1,27 +1,26 @@
 const jwt = require("jsonwebtoken");
-
-const authConstant = require("../constants/authConstant");
+require("dotenv").config();
 
 class AuthMiddleware {
   isAuthenticated(req, res, next) {
     try {
-      const token = req.cookies[authConstant.TOKEN_KEY];
-      
+      const token = req.cookies[process.env.TOKEN_KEY];
+
       if (!token) {
         res.redirect("/user/login");
       }
 
-      const decoded = jwt.verify(token, authConstant.JWT_SECRET_KEY);
+      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
       if (!decoded.userId) {
-        res.clearCookie(authConstant.TOKEN_KEY);
+        res.clearCookie(process.env.TOKEN_KEY);
         res.redirect("/user/login");
       }
 
-      req.tokenInfo = decoded
+      req.tokenInfo = decoded;
       next();
     } catch (err) {
-      res.clearCookie(authConstant.TOKEN_KEY);
+      res.clearCookie(process.env.TOKEN_KEY);
       res.redirect("/user/login");
     }
   }
